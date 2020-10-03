@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PouchDB testing</title>
+
+    <script src="//cdn.jsdelivr.net/npm/pouchdb@7.2.1/dist/pouchdb.min.js"></script>
+    <script src="js/db_connection.js"></script>
+    <script src="js/app.js"></script>
+
+</head>
+<body>
+
+    <h1>PouchDB</h1>
+
+    <div>
+<!--        <button onclick="createEncryptionFilterDesignDocument(db)">Create encryption filter</button>-->
+        <br/> <button onclick="createUser()">Create user</button>
+        <br/> <button onclick="createEncryptedUser()">Create encrypted user</button>
+        <br/> <button onclick="showUsers(db)"> Show users </button>
+        <br/> <button onclick="syncWithRemoteDB()"> Sync with remote CouchDB </button>
+        <br/> <button onclick="getChangesFrom(db)"> Get our latest changes from PouchDB </button> &nbsp; <input id="changesFromValue" type="text"/>
+        <br/> <button onclick="replicateToRemoteCouchDB('users')">Replicate to CouchDB</button>
+        <br/> <button onclick="replicateFromRemoteCouchDB('users')">Replicate from CouchDB</button>
+    </div>
+
+    <br/>
+
+    <div id="content">
+
+    </div>
+
+    <script>
+        //getChangesFrom(db);
+        //listenToChanges(db);
+    </script>
+</body>
+</html>
