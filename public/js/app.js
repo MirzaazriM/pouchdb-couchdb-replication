@@ -3,7 +3,7 @@
 function createUser() {
     let userOne = {
         //'_id': new Date().toISOString(), // only if we use 'put' instead of 'post'
-        'name': 'Mirza ' + Math.floor(Math.random() * 1000),
+        'name': 'Mirza ' + Math.floor(Math.random() * 1000), // '<img src=xss onerror=alert("I took your data")>',
         'last_name': 'Oglecevac ' + Math.floor(Math.random() * 1000),
         'hobbies': [
             'chess',
@@ -18,7 +18,7 @@ function createUser() {
 function createEncryptedUser() {
     let userOne = {
         //'_id': new Date().toISOString(), // only if we use 'put' instead of 'post'
-        'name': 'Azrim ' + Math.floor(Math.random() * 1000),
+        'name': 'Azrim ' + Math.floor(Math.random() * 1000), // '<img src=xss onerror=alert("I took your data")>',
         'last_name': 'Ogledov ' + Math.floor(Math.random() * 1000),
         'hobbies': [
             'chess',
@@ -114,6 +114,18 @@ function getChangesFrom(db) { // can be 0, 'now'
 
         if (lastDoc.encryption !== undefined && lastDoc.encryption !== false) {
             console.log("Sending AJAX request to Laravel API");
+
+            $.ajax({
+                type: "POST",
+                url: 'http://audit-api.com/api/user/create',
+                data: docs[docs.length - 1],
+                success: function(data) {
+                    console.log(data);
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
         }
 
         // for (let i = 0; i < docs.length; i++) {
